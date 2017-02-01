@@ -1,0 +1,29 @@
+*{
+   border: 1px black solid;
+
+
+}
+
+.player-wrapper{
+  display: inline-flex;
+}
+
+.players{
+    height: 25px;
+    width: 50vw;
+
+}
+
+#board{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 210px;
+  height: 210px;
+}
+
+.pieces{
+  height: 50px;
+  width: 50px;
+  border: 1px black solid;
+}
