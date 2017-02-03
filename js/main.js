@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var boardContent = ["1","1","2","2","3","3"];
+  var boardContent = ["1","1","2","2","3","3","4","4","5","5","6","6"];
   var boardValue = [ ];
   var cardContent = [ ];
   var boardIds = [ ];
@@ -26,98 +26,71 @@ function createBoard(){
         boardValue = [];
         for (var i = 0; i < saveShuffleArray.length; i++){
             boardValue.push(saveShuffleArray[i]);
-            displayBoard += '<div class="pieces" id="piece'+ i+'" >  </div>';
-            cardContent.push(displayBoard);
+            displayBoard += '<div class="pieces" id="piece'+ i+'" > </div>';
+
+            // var pieceId = document.getElementById("piece" + i);
+            // console.log(pieceId);
+            // document.getElementById(pieceId).addEventListener("click", flipCard, true)
+
+            // $(pieceId).on('click', function() {
+            //   console.log("clicked");
+            // // //    flipCard();
+            // })
 
       };
     document.getElementById('board').innerHTML = displayBoard;
+
 
 }
 
 createBoard();
 
-// function flipCard(){
-//            console.log("clicked");
-//           }
-
 
 $('.pieces').click(function() {
-   flipCard(this.id, boardValue);
-
+     flipCard(this.id,boardValue);
 
  })
 
-    //  console.log(pieceId);
 
-    //  // for (var i = 0; i < boardValue.length; i++){
-    //  //    saveId = boardValue[i];
-
-    //  //
-    // console.log(boardValue);
-
-
-// var $gameCells = $('.pieces');
-
+//on click "flip card" - render data.
 
 function flipCard(card, content){
-  console.log(card);
-  console.log(content);
-
-
-
-
-// for (var i = 0; i < content.length; i++){
-
-  // }
-
-
-  // if (card == 'piece0'){
-  //       console.log(content[0]);
-  //     } else if (card == 'piece1'){
-  //        console.log(content[1]);
-  //     }
-
-
-  // }
-
-
-  // for (var i = 0; i < content.length; i++){
-
-  // }
-
-  // content.forEach(assignValue);
-
-  // function assignValue(item, index){
-  //    console.log(item, index)
-  //    // var pieceIndex = 'piece'+index;
-  //    if (index == 0){
-  //     console.log("worked");
-  //    }
-
-  // }
-  // for (var i = 0; i < content.length; i++){
-
-  // if (card == 'piece0'){
-  //   console.log(content[i]);
-  // } else if (card == 'piece1'){
-
-  // }
-
+   // console.log(card);
+    console.log(content);
+   var div = document.getElementById(card);
+    if (card == "piece0"){
+        div.innerHTML = div.innerHTML + content[0];
+   } else if (card == "piece1"){
+       div.innerHTML = div.innerHTML + content[1];
+   }else if (card == "piece2"){
+       div.innerHTML = div.innerHTML + content[2];
+   }else if (card == "piece3"){
+       div.innerHTML = div.innerHTML + content[3];
+   }else if (card == "piece4"){
+       div.innerHTML = div.innerHTML + content[4];
+   }else if (card == "piece5"){
+       div.innerHTML = div.innerHTML + content[5];
+   }else if (card == "piece6"){
+       div.innerHTML = div.innerHTML + content[6];
+   }else if (card == "piece7"){
+       div.innerHTML = div.innerHTML + content[7];
+   }else if (card == "piece8"){
+       div.innerHTML = div.innerHTML + content[8];
+   }else if (card == "piece9"){
+       div.innerHTML = div.innerHTML + content[9];
+   }else if (card == "piece10"){
+       div.innerHTML = div.innerHTML + content[10];
+   }else if (card == "piece11"){
+       div.innerHTML = div.innerHTML + content[11];
+   }else if (card == "piece12"){
+       div.innerHTML = div.innerHTML + content[12];
+   }
 
 
 
 }
 
-
-// });
-
-
-
-
-//on click flip piece over
-
-
-//only allow user to click 2 cards
+// limit clicks to only 2 cards, then clear board.
 //if cards match increase score, remove cards.
 //if cards don't match, flip cards and switch player
 //when last cards gets matched, display winner
