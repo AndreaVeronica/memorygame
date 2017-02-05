@@ -5,6 +5,21 @@ $(document).ready(function() {
   var cardContent = [ ];
   var boardIds = [ ];
   var counter = 0;
+  // var player1count = 0;
+  // var player2count = 0;
+  var turn = [];
+  var cardIds = [];
+  var saveIds = "";
+  var score = 0;
+
+
+  var $gamePiece = $('.pieces');
+//reset board
+//hide reset board, during game.
+  $('#reset').on('click', function() {
+        location.reload();
+    })
+
 
 
 //shuffle array content
@@ -27,27 +42,16 @@ function createBoard(){
         for (var i = 0; i < saveShuffleArray.length; i++){
             boardValue.push(saveShuffleArray[i]);
             displayBoard += '<div class="pieces" id="piece'+ i+'" > </div>';
-
-            // var pieceId = document.getElementById("piece" + i);
-            // console.log(pieceId);
-            // document.getElementById(pieceId).addEventListener("click", flipCard, true)
-
-            // $(pieceId).on('click', function() {
-            //   console.log("clicked");
-            // // //    flipCard();
-            // })
-
       };
     document.getElementById('board').innerHTML = displayBoard;
-
-
 }
 
 createBoard();
 
-
 $('.pieces').click(function() {
+     counter++;
      flipCard(this.id,boardValue);
+
 
  })
 
@@ -55,47 +59,71 @@ $('.pieces').click(function() {
 //on click "flip card" - render data.
 
 function flipCard(card, content){
-   // console.log(card);
-    console.log(content);
-   var div = document.getElementById(card);
-    if (card == "piece0"){
-        div.innerHTML = div.innerHTML + content[0];
-   } else if (card == "piece1"){
-       div.innerHTML = div.innerHTML + content[1];
-   }else if (card == "piece2"){
-       div.innerHTML = div.innerHTML + content[2];
-   }else if (card == "piece3"){
-       div.innerHTML = div.innerHTML + content[3];
-   }else if (card == "piece4"){
-       div.innerHTML = div.innerHTML + content[4];
-   }else if (card == "piece5"){
-       div.innerHTML = div.innerHTML + content[5];
-   }else if (card == "piece6"){
-       div.innerHTML = div.innerHTML + content[6];
-   }else if (card == "piece7"){
-       div.innerHTML = div.innerHTML + content[7];
-   }else if (card == "piece8"){
-       div.innerHTML = div.innerHTML + content[8];
-   }else if (card == "piece9"){
-       div.innerHTML = div.innerHTML + content[9];
-   }else if (card == "piece10"){
-       div.innerHTML = div.innerHTML + content[10];
-   }else if (card == "piece11"){
-       div.innerHTML = div.innerHTML + content[11];
-   }else if (card == "piece12"){
-       div.innerHTML = div.innerHTML + content[12];
-   }
+     console.log(content);
+     var div = document.getElementById(card);
+     for (var i = 0; i < content.length; i++){
+          if (card == "piece"+[i]){
+                  div.innerHTML = div.innerHTML + content[i];
+                  turn.push(content[i]);
+                  console.log(turn);
+                  cardIds.push(card);
+           }else{
+            console.log("nope");
+           }
+      }
+     if (counter >= 2){
+         counter = 0;
+         checkForMatch(card, content);
+         turn.length = 0;
+         cardIds.length = 0;
+     }else{
+        console.log("nope");
+     }
+}
 
-
-
+function clearDiv(){
+          for (var i = 0; i < cardIds.length; i++){
+               var saveCardIndex0 = cardIds[0];
+               var saveCardIndex1 = cardIds[1];
+              }
+          setTimeout(timer, 1000);
+          function timer(){
+               var div1 = document.getElementById(saveCardIndex0);
+               div1.innerHTML = " ";
+               var div2 = document.getElementById(saveCardIndex1);
+               div2.innerHTML = " ";
+          }
 }
 
 // limit clicks to only 2 cards, then clear board.
-//if cards match increase score, remove cards.
-//if cards don't match, flip cards and switch player
-//when last cards gets matched, display winner
+function checkForMatch(card, content){
+     // console.log(cardIds);
+      if (turn[0] == turn[1]){
+              console.log("its a match");
+              matchMade();
+            } else{
+               clearDiv();
+            }
+}
+
 //keep over all score
-//reset board
+//if cards match increase score, remove cards.
+//when last cards gets matched, display "you've won"
+function matchMade(){
+      if (matchMade() == true){
+        console.log("match has been made");
+      }
+      score++;
+      console.log(score);
+      if (score >= 6){
+         console.log("you win");
+      }
+}
+
+
+//when cards match remove click option, change visual
+
+
 
 
 
@@ -103,7 +131,8 @@ function flipCard(card, content){
 
 // future iterations:
 //---- randomize board order
-
+//---- add player vs player
+//if cards don't match, flip cards and switch player
 
 
 
