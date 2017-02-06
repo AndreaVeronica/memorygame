@@ -17,9 +17,32 @@ body{
 }
 .h2-title{
   text-align: center;
+ font-family: 'Reenie Beanie', cursive;
+  font-size:45px;
+   margin-bottom: 4px;
+   color: #022c31;
 
-   margin-bottom: 30px;
-
+}
+.p-info{
+   font-family: 'Lora', serif;
+   color: #022c31;
+}
+.win-display{
+/*  height: 15px;*/
+  text-align: center;
+  color: #022c31;
+  font-family: 'Lora', serif;
+  font-size: 24px;
+}
+#reset{
+  background-color: #022c31;
+  border: 1px solid #022c31;
+  font-family: 'Lora', serif;
+  font-size: 12px;
+  color: white;
+  width: 65px;
+  opacity: 0.9;
+  filter: alpha(opacity=90);
 }
 .player-wrapper{
   display: inline-flex;
@@ -46,11 +69,40 @@ body{
 
 
 .pieces{
-  margin: 20px 20px;
-  width: 200px;
-  height: 150px;
-  padding: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  margin: 10px 20px;
+  width: 240px;
+  height: 200px;
+  padding: 0px;
+ /* padding-bottom: 2px;*/
+ /* border: 1px solid rgba(0, 0, 0, 0.5);*/
   background-color: rgba(255,255,255,.5);
 
 }
+.text-style{
+  margin: 40px 20px;
+  text-align: center;
+  font-family: 'Lora', serif;
+  color: #022c31;
+
+}
+.speaker-style{
+  margin-top: 10px;
+  margin-bottom: 2px;
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 24px;
+  color: #022c31;
+}
+.pic-style {
+  height: 80%;
+  width: 100%;
+/*  margin-bottom: 2px;*/
+
+}
+
+.p-info{
+  text-align: center;
+}
+
