@@ -21,7 +21,6 @@ $(document).ready(function() {
     })
 
 
-
 //shuffle array content
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
@@ -36,7 +35,7 @@ function shuffleArray(array) {
 //create board
 function createBoard(){
     var saveShuffleArray = shuffleArray(boardContent);
-     cardContent = [];
+        cardContent = [];
     var displayBoard = " ";
         boardValue = [];
         for (var i = 0; i < saveShuffleArray.length; i++){
@@ -44,40 +43,44 @@ function createBoard(){
             displayBoard += '<div class="pieces" id="piece'+ i+'" > </div>';
       };
     document.getElementById('board').innerHTML = displayBoard;
+    //startGame(displayBoard, boardValue);
 }
 
 createBoard();
 
-$('.pieces').click(function() {
+$('.pieces').on('click', startGame);
+
+ function startGame(){
+  // board, value
+     console.log(this.id);
      counter++;
-     flipCard(this.id,boardValue);
-
-
- })
-
+     flipCard(this.id, boardValue);
+}
 
 //on click "flip card" - render data.
 
 function flipCard(card, content){
      console.log(content);
      var div = document.getElementById(card);
+
      for (var i = 0; i < content.length; i++){
           if (card == "piece"+[i]){
                   div.innerHTML = div.innerHTML + content[i];
                   turn.push(content[i]);
                   console.log(turn);
                   cardIds.push(card);
+                  $(div).off('click');
            }else{
-            console.log("nope");
+           // console.log("nope");
            }
       }
      if (counter >= 2){
          counter = 0;
-         checkForMatch(card, content);
+         checkForMatch(div, card, content);
          turn.length = 0;
          cardIds.length = 0;
      }else{
-        console.log("nope");
+      //  console.log("nope");
      }
 }
 
@@ -89,29 +92,45 @@ function clearDiv(){
           setTimeout(timer, 1000);
           function timer(){
                var div1 = document.getElementById(saveCardIndex0);
+             //  $(div1).removeClass("clicked");
                div1.innerHTML = " ";
+               $(div1).on('click', startGame);
+              // $(div1).addClass("clickable");
                var div2 = document.getElementById(saveCardIndex1);
+              //  $(div2).removeClass("clicked");
                div2.innerHTML = " ";
+               $(div2).on('click', startGame);
+
           }
 }
 
 // limit clicks to only 2 cards, then clear board.
 function checkForMatch(card, content){
-     // console.log(cardIds);
+     // var saveIt = div;
+     // console.log(saveIt);
       if (turn[0] == turn[1]){
               console.log("its a match");
-              matchMade();
+              matchMade(cardIds, turn[0],turn[1]);
             } else{
+              // $(div).removeClass("clicked");
                clearDiv();
+               // console.log(this.id);
+
+
+               // var div = document.getElementById();
+               // $(div1).removeClass("clicked");
             }
 }
 
 //keep over all score
 //if cards match increase score, remove cards.
 //when last cards gets matched, display "you've won"
-function matchMade(){
-      if (matchMade() == true){
+function matchMade(cards, num1, num2){
+      // console.log(cards);
+
+      if (num1 == num2){
         console.log("match has been made");
+
       }
       score++;
       console.log(score);
