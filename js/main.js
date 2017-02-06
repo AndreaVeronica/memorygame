@@ -105,7 +105,7 @@ function createBoard(){
         boardValue = [];
         for (var i = 0; i < saveShuffleArray.length; i++){
             boardValue.push(saveShuffleArray[i]);
-            displayBoard += '<div class="pieces" id="piece'+ i+'" > </div>';
+            displayBoard += '<div class="pieces" id="piece'+ i+'" >  </div>';
       };
     document.getElementById('board').innerHTML = displayBoard;
     //startGame(displayBoard, boardValue);
@@ -131,10 +131,22 @@ function flipCard(card, content){
      for (var i = 0; i < content.length; i++){
           if (card == "piece"+[i]){
                   if (content[i].text) {
-                    div.innerHTML = div.innerHTML + content[i].text;
+                      var h3El = document.createElement("h3");
+                      var textContent = document.createTextNode(content[i].text);
+                       h3El.appendChild(textContent);
+                       div.appendChild(h3El);
+                       h3El.classList.add("text-style");
                   } else if (content[i].speaker) {
-                      div.innerHTML = div.innerHTML + content[i].speaker;
-                      div.innerHTML = div.innerHTML + content[i].pic;
+                       var h3El = document.createElement("h3");
+                       var imgEl = document.createElement("IMG");
+                       var speakerContent = document.createTextNode(content[i].speaker);
+                       var picContent = document.createTextNode(content[i].pic);
+                       h3El.appendChild(speakerContent);
+                       imgEl.appendChild(picContent);
+                       div.appendChild(h3El);
+                       div.appendChild(imgEl);
+                      h3El.classList.add("speaker-style");
+                      imgEl.classList.add("pic-style");
                   }
                   turn.push(content[i].number);
                   console.log(turn);
