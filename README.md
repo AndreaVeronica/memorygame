@@ -1,4 +1,4 @@
-## Tic-Tac-Toe
+## Disney Memory Game
 
 ### App Info
 
