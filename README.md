@@ -19,7 +19,7 @@ A web app that allows users to play a memory card game with disney quotes.
 -  Grandmother Willow
   - "Sometimes the right path is not the easiest one."
 
-- The Emporor
+- The Emperor
   - "The flower that blooms in adversity is the most rare and beautiful of them all."
 
 - Rafiki
