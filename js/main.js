@@ -99,11 +99,11 @@ $(document).ready(function() {
 
     //create board
     function createBoard() {
-        var saveShuffleArray = shuffleArray(boardContent);
+        shuffleArray(boardContent);
         var displayBoard = " ";
         boardValue = [];
-        for (var i = 0; i < saveShuffleArray.length; i++) {
-            boardValue.push(saveShuffleArray[i]);
+        for (var i = 0; i < boardContent.length; i++) {
+            boardValue.push(boardContent[i]);
             displayBoard += '<div class="pieces" id="piece' + i + '" >  </div>';
         };
         document.getElementById('board').innerHTML = displayBoard;
@@ -155,7 +155,7 @@ $(document).ready(function() {
         }
         if (counter >= 2) {
             counter = 0;
-            checkForMatch(div, card, content);
+            checkForMatch(cardIds, content);
             turn.length = 0;
             cardIds.length = 0;
         } else {
@@ -163,14 +163,11 @@ $(document).ready(function() {
         }
     }
 
-    function clearDiv() {
-
-        for (var i = 0; i < cardIds.length; i++) {
-            var saveCardIndex0 = cardIds[0];
-            var saveCardIndex1 = cardIds[1];
-        }
+ //when cards match remove click option, change visual
+    function clearDiv(cards) {
+           var saveCardIndex0 = cards[0];
+           var saveCardIndex1 = cards[1];
         setTimeout(timer, 1000);
-
         function timer() {
             var div1 = document.getElementById(saveCardIndex0);
             div1.innerHTML = " ";
@@ -178,37 +175,28 @@ $(document).ready(function() {
             var div2 = document.getElementById(saveCardIndex1);
             div2.innerHTML = " ";
             $(div2).on('click', startGame);
-
         }
     }
 
     // limit clicks to only 2 cards, then clear board.
-    function checkForMatch(card, content) {
-        if (turn[0] == turn[1]) {
-            //console.log("its a match");
-            matchMade(cardIds, turn[0], turn[1]);
-        } else {
-            clearDiv();
-        }
-    }
-
     //keep over all score
     //if cards match increase score, remove cards.
     //when last cards gets matched, display "you've won"
-    function matchMade(cards, num1, num2) {
-        if (num1 == num2) {
+    function checkForMatch(cards, content) {
+        console.log(cards + "testing");
+        if (turn[0] == turn[1]) {
             console.log("match has been made");
             score++;
             if (score >= 6) {
                 var win = document.getElementById('winner');
                 win.innerHTML = 'Yay! You won!';
-
             }
+        } else {
+            clearDiv(cards);
         }
     }
 
 
-    //when cards match remove click option, change visual
 
 
 
