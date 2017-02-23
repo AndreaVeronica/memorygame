@@ -13,7 +13,7 @@ A web app that allows users to play a memory card game with disney quotes.
 
 
 
-### Cheatsheet
+### Cheat Sheet
 
 
 -  Grandmother Willow
