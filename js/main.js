@@ -100,8 +100,8 @@ $(document).ready(function() {
         shuffleArray(arrayOfQuotes);
 
         for (var i = 0; i < 6; i++) {
-             boardContent.push(arrayOfQuotes[i].text);
-             boardContent.push(arrayOfQuotes[i]);
+            boardContent.push(arrayOfQuotes[i].text);
+            boardContent.push(arrayOfQuotes[i]);
         };
         // console.log(boardContent);
     }
@@ -115,8 +115,8 @@ $(document).ready(function() {
         var displayBoard = " ";
         boardValue = [];
         for (var i = 0; i < boardContent.length; i++) {
-             boardValue.push(boardContent[i]);
-             displayBoard += '<div class="pieces" id="piece' + i + '" >  </div>';
+            boardValue.push(boardContent[i]);
+            displayBoard += '<div class="pieces" id="piece' + i + '" >  </div>';
         };
         document.getElementById('board').innerHTML = displayBoard;
 
@@ -163,7 +163,7 @@ $(document).ready(function() {
                 console.log(turn);
                 cardIds.push(card);
                 $(div).off('click');
-             }
+            }
         }
         if (counter >= 2) {
             counter = 0;
