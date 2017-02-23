@@ -34,3 +34,8 @@ A web app that allows users to play a memory card game with disney quotes.
 - Mufasa
   - "I'm only brave when I have to be. Being brave doesn't mean you go looking for trouble."
 
+- Christopher Robins
+  - "You are braver than you believe, stronger than you seem, and smarter than you think."
+
+- Laverne
+  - "Life's not a spectator sport. If watchin' is all you're gonna do, then you're gonna watch your life go by without ya"
