@@ -98,12 +98,10 @@ $(document).ready(function() {
             arrayOfQuotes.push(quotes[i]);
         }
         shuffleArray(arrayOfQuotes);
-
         for (var i = 0; i < 6; i++) {
             boardContent.push(arrayOfQuotes[i].text);
             boardContent.push(arrayOfQuotes[i]);
         };
-        // console.log(boardContent);
     }
 
 
@@ -111,7 +109,6 @@ $(document).ready(function() {
     function createBoard() {
         picQuotes();
         shuffleArray(boardContent);
-        // console.log(boardContent);
         var displayBoard = " ";
         boardValue = [];
         for (var i = 0; i < boardContent.length; i++) {
@@ -119,7 +116,6 @@ $(document).ready(function() {
             displayBoard += '<div class="pieces" id="piece' + i + '" >  </div>';
         };
         document.getElementById('board').innerHTML = displayBoard;
-
     }
 
     createBoard();
@@ -198,6 +194,10 @@ $(document).ready(function() {
     function checkForMatch(cards, content) {
         if (turn[0] == turn[1]) {
             console.log("match has been made");
+            var div1 = document.getElementById(cards[0]);
+            var div2 = document.getElementById(cards[1]);
+            div1.classList.add("matched");
+            div2.classList.add("matched");
             score++;
             if (score >= 6) {
                 var win = document.getElementById('winner');
